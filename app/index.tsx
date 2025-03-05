@@ -1,28 +1,33 @@
 // app/index.tsx
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
-
+import React from "react";
+import { View, Text, Button, StyleSheet, Pressable } from "react-native";
+import { Link, useRouter } from "expo-router";
 
 export default function Home() {
   const router = useRouter();
-  
+
+  let userId = 6
+
   return (
-    
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Button title="Ir a Pantalla 1" onPress={() => router.push('pantalla1')} />
-      <Button title="Ir a Pantalla 2" onPress={() => router.push('pantalla2')} />
+      <Text>Home</Text>
+      <Link href={`/users/${userId}`}>Go to user 1</Link>
+      <Pressable onPress={() => router.push({
+        pathname: "message/[id]",
+        params: {id: 2}
+      })}>
+        <Text>Go to message</Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#eedd22",
   },
   title: {
     fontSize: 24,
