@@ -1,6 +1,7 @@
 // app/index.tsx
 import React from "react";
 import { View, Text, Button, StyleSheet, Pressable } from "react-native";
+import { StatusBar } from 'expo-status-bar';
 import { Link, useRouter } from "expo-router";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <StatusBar style='auto'/>
       <Text>Home</Text>
       <Link href={`/users/${userId}`}>Go to user 1</Link>
       <Pressable onPress={() => router.push({
